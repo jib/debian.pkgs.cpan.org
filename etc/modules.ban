@@ -1,0 +1,7 @@
+### stuff we dont want to build right now
+IMAP::Admin             # interactive, even though we told it not to!
+Device::SerialPort      # doesn't quite work on the debian box (missing ttys)
+Math::Pari              # interactive install when missing libs
+^POE$                   # messes with the installer, hangs it =/
+^Template$              # interactive install (report it!)
+^IO::Pty$               # doesn't seem to run on debian
