@@ -1,0 +1,7 @@
+^IO$                    # provided with core anyway
+^Cwd$                   # provided with core anyway
+^File::Spec             # provided with core anyway
+^Config$                # perl's own config... just confusing
+^ExtUtils::MakeMaker$   # shipped with perl, recent versions 
+                        # have this bug: #14721
+^ExtUtils::Install$     # part of of EU::MM, same reason                        
