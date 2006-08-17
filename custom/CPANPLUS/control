@@ -1,0 +1,15 @@
+Source: cpan-libcpanplus-perl
+Section: perl
+Priority: optional
+Maintainer: cpanplus@example.com
+Standards-Version: 3.6.1
+Build-Depends: debhelper (>= 4.0.2), 
+
+
+Architecture: all
+Package: cpan-libcpanplus-perl
+Provides: libcpanplus-perl
+Depends: ${perl:Depends}, ${misc:Depends}, perl (>= 5.8.7), make
+Description: CPANPLUS
+ CPANPLUS
+
