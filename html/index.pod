@@ -1,0 +1,134 @@
+=head1 NAME
+
+    debian.pkgs.cpan.org -- debified CPAN packages
+
+=head1 SYNOPSIS
+
+    ### add this line to your /etc/apt/sources.list
+    ### note these packages are not signed, see the LICENSE section
+    deb http://debian.pkgs.cpan.org/debian unstable main
+
+    ### update your sources & search for debified cpan distributions
+    apt-get update
+    apt-cache search libtest-harness-perl
+
+    ### to create them yourself
+    apt-get install cpan-libcpanplus-perl            
+    apt-get install cpan-libcpanplus-dist-build-perl
+    apt-get install cpan-libcpanplus-dist-deb-perl
+
+=head1 MOTIVATION
+
+This mirror has been created because even the C<debian unstable> 
+repositories usually lag behind the C<CPAN> releases (ie there are
+newer versions of a package on C<CPAN> than you can find in the 
+C<debian> repositories). On top of that, not all packages on C<CPAN>
+are available in the standard C<debian unstable> repositories.
+
+This mirror attempts to amend some of these issues.
+
+=head1 DESCRIPTION
+
+C<debian.pkgs.cpan.org> is a C<debian> repository containing a selection
+of C<CPAN> modules, converted on the fly from their native C<CPAN> 
+package format, to a C<debian> package.
+
+You can make use of this feature by adding a line to your 
+C<sources.list> as described in the C<SYNOPSIS>.
+
+Note that all our automatically generated packages are prefixed with 
+C<cpan->, so you can easily recognize them, and they do not conflict 
+with any of the C<debian> provided packages. Furthermore, all 
+dependencies are listed as C<libfoo-perl | cpan-libfoo-perl>, which
+makes it possible to mix and match, making you not solely reliant on
+this mirror to satisfy prerequisites.
+See the C<EXAMPLE> section below for a detailed description of the
+C<debian> metadata.
+
+=head1 DOING IT YOURSELF
+
+If a C<CPAN> package you are looking for is not provided here, but 
+you'd like to attempt to create your own C<debian> package from it 
+anyway, you can do so installing the following packages from this
+mirror:
+
+=over 4
+
+=item cpan-libcpanplus-perl
+
+The C<CPANPLUS> library, required for fetching and compiling modules
+
+=item cpan-libcpanplus-dist-build
+
+The C<Module::Build> plugin, to be able to compile modules that
+use C<Module::Build> as their installer
+
+=item cpan-libcpanplus-dist-deb
+
+The C<debian> plugin, to create C<.deb> files of every package and
+installing them using C<dpkg>.
+
+=back
+
+If you wish to create your own C<.debs> you can do so by following
+the instructions above and installing the relevant packages for it.
+
+After installation, please refer to C<perldoc CPANPLUS::Dist::Deb>
+for details.
+
+Note: If you wish the creation of C<.debs> to be the default behaviour,
+change your config as follows, from the default shell:
+
+    CPAN Terminal> s conf dist_type CPANPLUS::Dist::Deb; s save
+
+=head1 EXAMPLE
+
+Below is an example of how C<Test::Simple> looks, once it has been 
+debified for this mirror:
+
+    $ dpkg -I cpan-libtest-simple-perl_0.62-1_all.deb 
+     new debian package, version 2.0.
+     size 73178 bytes: control archive= 959 bytes.
+         381 bytes,    11 lines      control              
+        1438 bytes,    18 lines      md5sums              
+     Package: cpan-libtest-simple-perl
+     Version: 0.62-1
+     Section: perl
+     Priority: optional
+     Architecture: all
+     Depends: perl (>= 5.6.0-16), perl (>= 5.8.7), libtest-harness-perl (>= 2.56) | cpan-libtest-harness-perl (>= 2.56)
+     Provides: libtest-simple-perl
+     Installed-Size: 360
+     Maintainer: cpanplus@example.com
+     Description: Basic utilities for writing tests
+      Basic utilities for writing tests
+
+
+=head1 LICENSE
+
+Note that all of the C<.debs> created and put on this mirror, as well
+as ones created by yourself still adhere to the same license as the
+original package; By releasing a package to CPAN we assume the license
+permits automatic repackaging, but we do not guarantee this is the case!
+
+All packages presented here, or created by C<CPANPLUS::Dist::Deb> in
+general come without warranty or even fitness of use; use at your own
+risk at your own discretion.
+
+If licenses are of major concern to you C<DO NOT USE THIS MIRROR> but
+stick to the official debian mirrors instead!
+
+=head1 AUTHOR
+
+This text by Jos Boumans E<lt>kane[at]cpan.orgE<gt>.
+
+=cut
+
+__END__
+
+# Local variables:
+# c-indentation-style: bsd
+# c-basic-offset: 4
+# indent-tabs-mode: nil
+# End:
+# vim: expandtab shiftwidth=4:
