@@ -1,0 +1,15 @@
+Source: cpan-libcpanplus-dist-deb-perl
+Section: perl
+Priority: optional
+Maintainer: cpanplus@example.com
+Standards-Version: 3.6.1
+Build-Depends: debhelper (>= 4.0.2)
+Build-Depends-Indep: debhelper (>= 4.0.2)
+
+Architecture: any
+Package: cpan-libcpanplus-dist-deb-perl
+Provides: libcpanplus-dist-deb-perl
+Depends: ${perl:Depends}, ${misc:Depends}, perl (>= 5.8.7), libcpanplus-perl (>= 0.0562) | cpan-libcpanplus-perl (>= 0.0562), libcpanplus-dist-build-perl (>= 0.03) | cpan-libcpanplus-dist-build-perl (>= 0.03), libipc-cmd-perl (>= 0.24) | cpan-libipc-cmd-perl (>= 0.24), liblocale-maketext-simple-perl | cpan-liblocale-maketext-simple-perl, libmodule-load-conditional-perl (>= 0.08) | cpan-libmodule-load-conditional-perl (>= 0.08), libmodule-pluggable-perl (>= 2.96) | cpan-libmodule-pluggable-perl (>= 2.96), libobject-accessor-perl (>= 0.12) | cpan-libobject-accessor-perl (>= 0.12), libpackage-constants-perl | cpan-libpackage-constants-perl, libparams-check-perl (>= 0.23) | cpan-libparams-check-perl (>= 0.23), libtest-simple-perl | cpan-libtest-simple-perl, libyaml-perl | cpan-libyaml-perl, libc6-dev, dpkg, debhelper, gcc, dpkg-dev, fakeroot, findutils, apt-utils
+Description: CPANPLUS::Dist::Deb
+ CPANPLUS::Dist::Deb
+
