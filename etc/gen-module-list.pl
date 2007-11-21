@@ -7,9 +7,15 @@ my $Up  = @ARGV ? 1 : 0;
 
 if( $Up ) {
     my $CB  = CPANPLUS::Backend->new;
+    $CB->configure_object->set_conf( verbose => 0 );
+
     my $Mod = $CB->module_tree($Pkg);
 
-    $Mod->install unless $Mod->is_uptodate;
+    unless( $Mod->is_uptodate ) {
+        $Mod->fetch;
+        $Mod->extract;
+        push @INC, $Mod->status->extract .'/lib';
+    }      
 }
 
 load $Pkg; $Pkg->import;
