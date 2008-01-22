@@ -5,3 +5,4 @@
 ^ExtUtils::MakeMaker$   # shipped with perl, recent versions 
                         # have this bug: #14721
 ^ExtUtils::Install$     # part of of EU::MM, same reason                        
+^IPC::ShareLite$        # crazy interactive makefile.pl, only needed by cache::cache, optionally!
