@@ -1,4 +1,3 @@
-[MSG] No '/home/kane/.cpanplus/custom-sources' dir, skipping custom sources
 CPANPLUS::Internals::Constants
 Log::Message::Item
 Archive::Extract
